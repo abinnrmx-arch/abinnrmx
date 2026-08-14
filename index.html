@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+
+<!--PENGATURAN WEB-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abinn RMX</title>
+
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+/* BODY */
+/* BODY */
+body{
+background:#181818;
+color:white;
+}
+/* HEADER */
+header{
+padding:10px;
+background:linear-gradient(90deg,#6700f7,#000000);
+box-shadow:0 0 20px hwb(265 0% 3%);
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+z-index:1000;
+}
+.header-content{
+display:flex;
+align-items:center;
+gap:18px;
+max-width:900px;
+margin:auto;
+}
+.header-content img{
+width:50px;
+height:50px;
+border-radius:50%;
+object-fit:cover;
+}
+.header-text h1{
+font-size:28px;
+margin-bottom:6px;
+}
+.header-text p{
+opacity:.8;
+font-size:15px;
+}
+/* CONTAINER */
+.container{
+width:85%;
+max-width:900px;
+margin:auto;
+padding:100px 0 50px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:25px;
+}
+/* CARD PRODUK */
+.card{
+background:#181818;
+border:2px solid #6700f7;
+border-radius:40px;
+overflow:hidden;
+transition:.3s;
+box-shadow:0 0 15px rgba(0,170,255,.25);
+}
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 0 25px #6700f7;
+}
+  /* CAHAYA UNGU KELAP-KELIP */
+.card{
+    animation: kedipUngu 1.5s infinite alternate;
+}
+
+@keyframes kedipUngu{
+    0%{
+        box-shadow:
+        0 0 5px #6700f7,
+        0 0 10px rgba(103,0,247,.3);
+    }
+
+    50%{
+        box-shadow:
+        0 0 15px #6700f7,
+        0 0 30px rgba(103,0,247,.7);
+    }
+
+    100%{
+        box-shadow:
+        0 0 5px #6700f7,
+        0 0 10px rgba(103,0,247,.3);
+    }
+}
+.card img{
+width:85%;
+margin:20px auto;
+display:block;
+aspect-ratio:1/1;
+object-fit:cover;
+border-radius:10px;
+}
+/* INFO PRODUK */
+.info{
+padding:18px;
+}
+
+.info h2{
+margin-bottom:10px;
+font-size:23px;
+
+}
+.price{
+font-size:24px;
+color:#6700f7;
+margin:10px 0;
+font-weight:bold;
+}
+.stats{
+color:#bbb;
+margin-bottom:15px;
+}
+/* TOMBOL */
+button{
+padding:12px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-size:16px;
+font-weight:bold;
+transition:.3s;
+}
+.play{
+background:#6700f7;
+color:white;
+width:48%;
+}
+.buy{
+background:#400295;
+color:white;
+width:48%;
+float:right;
+}
+button:hover{
+opacity:.85;
+}
+/* AUDIO */
+audio{
+width:100%;
+margin-top:15px;
+}
+/* HALAMAN */
+.page{
+display:none;
+}
+.page.active{
+display:block;
+}
+
+/* MENU BAWAH */
+.menu{
+position:fixed;
+bottom:0px;
+left:50%;
+transform:translateX(-50%);
+width:100%;
+max-width:500px;
+background:rgba(20,20,20,0.1);
+backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,0.15);
+border-radius:30px;
+display:flex;
+justify-content:space-around;
+align-items:center;
+padding:12px 0;
+box-shadow:0 0 20px rgba(0,170,255,.25);
+z-index:1000;
+}
+
+
+.menu button{
+background:none;
+border:none;
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+padding:10px 20px;
+}
+
+.menu button:hover{
+color:#6700f7;
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:20px;
+color:#b3b3b3;
+}
+</style>
+</head>
+<body>
+  
+<!-- HEADER -->
+<header>
+<div class="header-content">
+<img src="LOGO.jpg" alt="Logo">
+<div class="header-text">
+<h1>Abinn PW RMX</h1>
+<p>Flm Enak Ya Cuman Di Abin Rmx</p>
+</div>
+</div>
+</header>
+
+<div id="dashboard" class="page active">
+
+<div style="
+max-width:300px;
+margin:110px auto 120px;
+background:#181818;
+padding:20px;
+border-radius:40px;
+text-align:center;
+box-shadow:0 0 20px rgb(103, 0, 247);
+">
+
+<h1 style="
+font-size:34px;
+color:#6700f7;
+margin-bottom:15px;
+">
+Abin RMX
+</h1>
+<h2 style="margin-bottom:25px;">
+Setiap jumat buy 1 <br>
+get 1 flm random
+</h2>
+<p style="font-size:20px;line-height:40px;">
+
+🎵 FLM Premium<br>
+⚡ Request Remix<br>
+💎 Preview Sebelum Beli
+
+</p>
+
+<br>
+
+<button
+onclick="window.open('https://whatsapp.com/channel/0029Vb64TwBGE56mtj5wmu1U','_blank')"
+style="
+background:#6700f7;
+color:white;
+padding:15px 35px;
+border:none;
+border-radius:15px;
+font-size:20px;
+font-weight:bold;
+">
+💬 Testimoni
+</button>
+
+<br><br><br>
+
+<hr style="border:1px solid #444;">
+
+<br>
+
+<div style="font-size:20px;">
+
+<h3 id="totalProduk">⭐ Total Produk : 0</h3>
+
+<br>
+
+<h3 id="totalTerjual">🔥 Terjual : 0</h3>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PRODUK 1 -->
+<div id="produk" class="page">
+<div class="container">
+<!------------------------------------->
+
+
+
+
+
+
+
+
+<div class="card">
+<!-- Cover Album -->
+<img src="LOGO.jpg">
+<div class="info">
+<!-- Judul Lagu -->
+<h2>MASHUP ULAR - IMAM SIDIK</h2>
+<!-- Harga -->
+<div class="price">
+Rp50.000
+</div>
+<!-- Jumlah Terjual -->
+<div class="stats">
+Terjual 0
+</div>
+<!-- Tombol Preview -->
+<button class="play"
+onclick="
+document.querySelectorAll('.card').forEach(c=>c.classList.remove('playing'));
+document.querySelectorAll('audio').forEach(a=>{
+    a.pause();
+    a.currentTime=0;
+    a.style.display='none';
+});
+this.closest('.card').classList.add('playing');
+document.getElementById('audio1').style.display='block';
+document.getElementById('audio1').play();
+">
+▶ Preview
+</button>
+<button class="buy" onclick="beli(this)">
+🛒 Buy
+</button>
+<!-- Audio Lagu -->
+<audio id="audio1" controls style="display:none;">
+<source src="MASHUP ULAR - IMAM SIDIK.mp3">
+</audio>
+</div>
+</div>
+<!------------------------------------>
+
+
+
+
+
+  
+
+<div class="card">
+<!-- Cover Album -->
+<img src="LOGO.jpg">
+<div class="info">
+<!-- Judul Lagu -->
+<h2>AKU MAH APA - ENAFF</h2>
+<!-- Harga -->
+<div class="price">
+Rp50.000
+</div>
+<!-- Jumlah Terjual -->
+<div class="stats">
+Terjual 0
+</div>
+<!-- Tombol Preview -->
+<button class="play"
+onclick="
+document.querySelectorAll('.card').forEach(c=>c.classList.remove('playing'));
+document.querySelectorAll('audio').forEach(a=>{
+    a.pause();
+    a.currentTime=0;
+    a.style.display='none';
+});
+this.closest('.card').classList.add('playing');
+document.getElementById('audio2').style.display='block';
+document.getElementById('audio2').play();
+">
+▶ Preview
+</button>
+<button class="buy" onclick="beli(this)">
+🛒 Buy
+</button>
+<!-- Audio Lagu -->
+<audio id="audio2" controls style="display:none;">
+<source src="AKU MAH APA - ENAFF.mp3">
+</audio>
+</div>
+</div>
+<!------------------------------------->
+
+
+
+
+<div class="card">
+<!-- Cover Album -->
+<img src="LOGO.jpg">
+<div class="info">
+<!-- Judul Lagu -->
+<h2>MASHUP - KOPLO</h2>
+<!-- Harga -->
+<div class="price">
+Rp50.000
+</div>
+<!-- Jumlah Terjual -->
+<div class="stats">
+Terjual 0
+</div>
+<!-- Tombol Preview -->
+<button class="play"
+onclick="
+document.querySelectorAll('.card').forEach(c=>c.classList.remove('playing'));
+document.querySelectorAll('audio').forEach(a=>{
+    a.pause();
+    a.currentTime=0;
+    a.style.display='none';
+});
+this.closest('.card').classList.add('playing');
+document.getElementById('audio3').style.display='block';
+document.getElementById('audio3').play();
+">
+▶ Preview
+</button>
+<button class="buy" onclick="beli(this)">
+🛒 Buy
+</button>
+<!-- Audio Lagu -->
+<audio id="audio3" controls style="display:none;">
+<source src="MASHUP - KOPLO.mp3">
+</audio>
+</div>
+</div>
+<!------------------------------------->
+
+
+
+
+
+<div class="card">
+<!-- Cover Album -->
+<img src="LOGO.jpg">
+<div class="info">
+<!-- Judul Lagu -->
+<h2>SESI POTRET - ENAFF BABAT</h2>
+<!-- Harga -->
+<div class="price">
+Rp50.000
+</div>
+<!-- Jumlah Terjual -->
+<div class="stats">
+Terjual 0
+</div>
+<!-- Tombol Preview -->
+<button class="play"
+onclick="
+document.querySelectorAll('.card').forEach(c=>c.classList.remove('playing'));
+document.querySelectorAll('audio').forEach(a=>{
+    a.pause();
+    a.currentTime=0;
+    a.style.display='none';
+});
+this.closest('.card').classList.add('playing');
+document.getElementById('audio4').style.display='block';
+document.getElementById('audio4').play();
+">
+▶ Preview
+</button>
+<button class="buy" onclick="beli(this)">
+🛒 Buy
+</button>
+<!-- Audio Lagu -->
+<audio id="audio4" controls style="display:none;">
+<source src="SESI POTRET - ENAFF BABAT.mp3">
+</audio>
+</div>
+</div>
+<!------------------------------------->
+
+
+
+
+
+<div class="card">
+<!-- Cover Album -->
+<img src="LOGO.jpg">
+<div class="info">
+<!-- Judul Lagu -->
+<h2>NGULAR - DROP</h2>
+<!-- Harga -->
+<div class="price">
+Rp50.000
+</div>
+<!-- Jumlah Terjual -->
+<div class="stats">
+Terjual 0
+</div>
+<!-- Tombol Preview -->
+<button class="play"
+onclick="
+document.querySelectorAll('.card').forEach(c=>c.classList.remove('playing'));
+document.querySelectorAll('audio').forEach(a=>{
+    a.pause();
+    a.currentTime=0;
+    a.style.display='none';
+});
+this.closest('.card').classList.add('playing');
+document.getElementById('audio5').style.display='block';
+document.getElementById('audio5').play();
+">
+▶ Preview
+</button>
+<button class="buy" onclick="beli(this)">
+🛒 Buy
+</button>
+<!-- Audio Lagu -->
+<audio id="audio5" controls style="display:none;">
+<source src="NGULAR - DROP.mp3">
+</audio>
+</div>
+</div>
+<!------------------------------------->
+
+
+
+
+  <div class="card">
+<!-- Cover Album -->
+<img src="LOGO.jpg">
+<div class="info">
+<!-- Judul Lagu -->
+<h2>KUTIMANG - ENAFF</h2>
+<!-- Harga -->
+<div class="price">
+Rp50.000
+</div>
+<!-- Jumlah Terjual -->
+<div class="stats">
+Terjual 0
+</div>
+<!-- Tombol Preview -->
+<button class="play"
+onclick="
+document.querySelectorAll('.card').forEach(c=>c.classList.remove('playing'));
+document.querySelectorAll('audio').forEach(a=>{
+    a.pause();
+    a.currentTime=0;
+    a.style.display='none';
+});
+this.closest('.card').classList.add('playing');
+document.getElementById('audio6').style.display='block';
+document.getElementById('audio6').play();
+">
+▶ Preview
+</button>
+<button class="buy" onclick="beli(this)">
+🛒 Buy
+</button>
+<!-- Audio Lagu -->
+<audio id="audio6" controls style="display:none;">
+<source src="KUTIMANG - ENAFF.mp3">
+</audio>
+</div>
+</div>
+<!------------------------------------->
+
+
+
+
+
+
+
+
+  
+
+</div>
+</div>
+<!-- FOOTER -->
+<footer>
+© 2026 Abin FLM STORE
+</footer>
+
+<div class="menu">
+    <button onclick="showPage('dashboard')">
+        🏠<br>Dashboard
+    </button>
+
+    <button onclick="showPage('produk')">
+        🛍<br>Produk
+    </button>
+</div>
+
+<script>
+function beli(button){
+    let lagu = button.parentElement.querySelector("h2").innerText;
+    let harga = button.parentElement.querySelector(".price").innerText;
+
+    let pesan = `Halo Abin RMX,
+Saya mau beli flm:
+    
+${lagu}
+${harga}`;
+
+    window.open(
+        "https://wa.me/6285729376366?text=" + encodeURIComponent(pesan),
+    );
+}
+function showPage(id){
+
+document.querySelectorAll(".page").forEach(function(page){
+page.classList.remove("active");
+});
+
+document.getElementById(id).classList.add("active");
+}
+// =========================
+// STATISTIK OTOMATIS
+// =========================
+
+function updateStatistik(){
+
+    let jumlahProduk = document.querySelectorAll(".card").length;
+
+    let jumlahTerjual = 0;
+
+    document.querySelectorAll(".stats").forEach(function(item){
+
+        let angka = item.innerText.replace("Terjual","").trim();
+
+        jumlahTerjual += parseInt(angka) || 0;
+
+    });
+
+    document.getElementById("totalProduk").innerHTML =
+    "⭐ Total Produk : " + jumlahProduk;
+
+    document.getElementById("totalTerjual").innerHTML =
+    "🔥 Terjual : " + jumlahTerjual;
+
+}
+updateStatistik();
+</script>
+
+</body>
+</html>
